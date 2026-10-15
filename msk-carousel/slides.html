@@ -16,7 +16,9 @@
   .cover h1 { font-family: var(--head); font-weight: 800; font-size: 82px; line-height: 1.3; margin-top: 30px; white-space: nowrap; }
   .cover h2 { font-family: var(--head); font-weight: 700; font-size: 44px; line-height: 1.3; color: var(--ink); display: flex; align-items: center; justify-content: center; gap: 14px; }
   .cover h2 .ruq { font-size: 76px; color: var(--mint); line-height: 1.2; }
-  .cover .stage { margin-top: 16px; }
+  .cover .stage { margin-top: 18px; }
+  .site-pill { align-self: center; margin-top: 14px; display: inline-flex; align-items: center; gap: 10px; direction: ltr; font-weight: 600; font-size: 26px; color: var(--ink); padding: 8px 22px 8px 16px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line-2); }
+  .site-pill svg { width: 26px; height: 26px; stroke: var(--mint); }
   .cover .laptop { width: 700px; }
   .cover .phone { position: absolute; width: 170px; left: 70px; bottom: -6px; border-radius: 32px; padding: 7px; }
   .cover .phone .screen { border-radius: 26px; }
@@ -72,7 +74,8 @@
   .sync .browser .screen { aspect-ratio: 10 / 13; }
   .sync .knot { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 4; width: 104px; height: 104px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; box-shadow: 0 0 0 12px rgba(134,227,181,.16), 0 20px 40px rgba(0,0,0,.5); }
   .sync .knot svg { width: 50px; height: 50px; stroke: var(--bg-0); }
-  .sync .cap { position: absolute; top: -18px; z-index: 4; font-family: var(--head); font-weight: 800; font-size: 24px; background: var(--bg-1); border: 1px solid var(--mint); color: var(--mint); padding: 6px 18px; border-radius: 12px; }
+  .sync .sw { position: relative; padding-top: 22px; }
+  .sync .cap { position: absolute; top: 0; inset-inline-start: 22px; z-index: 4; font-family: var(--head); font-weight: 800; font-size: 24px; background: var(--bg-1); border: 1px solid var(--mint); color: var(--mint); padding: 6px 18px; border-radius: 12px; }
 
   /* ---- grid of features ---- */
   .feats.three { grid-template-columns: 1fr 1fr; }
@@ -97,6 +100,7 @@
     <div class="cover-logo"><span class="orbit o2"></span><span class="orbit o1"></span><span class="card"><img src="assets/logos/msk-logo.png" alt="MSK"></span></div>
     <h1>تصميم موقع إلكتروني</h1>
     <h2><span>لـ</span><span class="ruq">شركة المسك</span><span>للخدمات النفطية</span></h2>
+    <div class="site-pill"><i data-icon="globe"></i>msk-gf.com</div>
     <div class="stage">
       <div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-home-ar.png" alt="الرئيسية — عربي"></div></div><div class="base"></div></div>
       <div class="phone"><div class="screen"><img src="shots/m-home-ar.png" alt="موبايل"></div></div>
@@ -143,8 +147,8 @@
     <h1 class="title">عربي و English<br><em>بضغطة زر واحدة</em></h1>
     <p class="lead">الموقع متوفر بالكامل باللغتين، مع تبديل فوري للغة واتجاه الصفحة.</p>
     <div class="lang-stage">
-      <div class="browser b-ar"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com/website/#/ar/home</span></div><div class="screen"><img src="shots/web-home-ar.png" alt="النسخة العربية"></div></div>
-      <div class="browser b-en"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com/website/#/en/home</span></div><div class="screen"><img src="shots/web-home-en.png" alt="English version"></div></div>
+      <div class="browser b-ar"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com</span></div><div class="screen"><img src="shots/web-home-ar.png" alt="النسخة العربية"></div></div>
+      <div class="browser b-en"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com/en</span></div><div class="screen"><img src="shots/web-home-en.png" alt="English version"></div></div>
       <span class="tag" style="top:70px;right:-14px">العربية</span>
       <span class="tag" style="bottom:30px;left:-14px">English</span>
       <span class="toggle"><i data-icon="sync"></i></span>
@@ -294,8 +298,8 @@
     <h1 class="title sm">عدّل مرة واحدة…<br><em>يتحدّث الموقعان معاً</em></h1>
     <p class="lead">أي تعديل على المحتوى العربي ينعكس مباشرة على النسخة الإنكليزية.</p>
     <div class="sync">
-      <div class="browser"><span class="cap" style="right:20px">عربي</span><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">/ar</span></div><div class="screen"><img src="shots/web-news-detail-ar.png" alt="خبر — عربي"></div></div>
-      <div class="browser"><span class="cap" style="left:20px">English</span><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">/en</span></div><div class="screen"><img src="shots/web-news-detail-en.png" alt="News — English"></div></div>
+      <div class="sw"><span class="cap">العربية</span><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">msk-gf.com</span></div><div class="screen"><img src="shots/web-news-detail-ar.png" alt="خبر — عربي"></div></div></div>
+      <div class="sw"><span class="cap">English</span><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">msk-gf.com/en</span></div><div class="screen"><img src="shots/web-news-detail-en.png" alt="News — English"></div></div></div>
       <span class="knot"><i data-icon="sync"></i></span>
     </div>
   </div>
@@ -349,6 +353,12 @@
     <h1 class="title">هل تريد موقعاً<br><em>بهذا المستوى</em> لشركتك؟</h1>
     <p class="lead"><span class="ruq" style="font-size:44px">مستر تك</span> — تصميم وتطوير مواقع ولوحات تحكم متكاملة.</p>
     <div class="url"><i data-icon="globe"></i>www.mrtechiq.com</div>
+    <div class="services">
+      <span class="chip"><i data-icon="monitor"></i>مواقع الشركات</span>
+      <span class="chip"><i data-icon="dashboard"></i>لوحات التحكم</span>
+      <span class="chip"><i data-icon="languages"></i>مواقع متعددة اللغات</span>
+      <span class="chip"><i data-icon="phone"></i>تصميم متجاوب</span>
+    </div>
   </div>
 </section>
 
