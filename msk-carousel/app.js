@@ -37,6 +37,7 @@ const icon = (n, cls = '') => `<svg class="i ${cls}" viewBox="0 0 24 24">${ICONS
 const HEX = '<svg class="hex" viewBox="0 0 200 200"><path d="M100 6 181 53v94l-81 47-81-47V53z"/><path d="M100 30 160 65v70l-60 35-60-35V65z"/><path d="M100 54 140 77v46l-40 23-40-23V77z"/></svg>';
 
 const SITE = 'www.mrtechiq.com';
+const SECTIONS = ['المقدمة', 'الموقع الإلكتروني', 'لوحة التحكم', 'الخلاصة'];
 
 document.querySelectorAll('.slide').forEach((slide, idx, all) => {
   const n = String(idx + 1).padStart(2, '0');
@@ -57,6 +58,10 @@ document.querySelectorAll('.slide').forEach((slide, idx, all) => {
         <span class="msk-chip"><img src="assets/logos/msk-logo.png" alt=""></span>
       </div>
     </header>
+    ${slide.dataset.section ? `<nav class="sections">${SECTIONS.map((t, k) => {
+      const cur = Number(slide.dataset.section) - 1;
+      return `<span class="sec ${k === cur ? 'on' : k < cur ? 'done' : ''}"><span class="k">${k + 1}</span>${t}</span>`;
+    }).join('')}</nav>` : ''}
     <footer class="ftr">
       <div class="site">${icon('globe')}<span>${SITE}</span></div>
       <div class="pager"><b>${n}</b><span class="bar"><i style="width:${((idx + 1) / all.length) * 100}%"></i></span><span>${total}</span></div>
