@@ -18,11 +18,17 @@
   .cover h2 em { font-style: normal; color: var(--mint); font-weight: 800; }
   .site-pill { align-self: center; margin-top: 16px; display: inline-flex; align-items: center; gap: 10px; direction: ltr; font-weight: 600; font-size: 26px; color: var(--ink); padding: 8px 22px 8px 16px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line-2); }
   .site-pill svg { width: 26px; height: 26px; stroke: var(--mint); }
-  .cover .stage { margin-top: 20px; }
+  .cover .stage { margin-top: 0; padding-top: 24px; }
   .cover .laptop { width: 700px; }
   .cover .phone.float { position: absolute; width: 170px; left: 70px; bottom: -6px; border-radius: 32px; padding: 7px; }
   .cover .phone.float .screen { border-radius: 26px; }
   .cover .phone.float::after { top: 13px; width: 52px; height: 15px; margin-left: -26px; }
+
+  /* small phone that sits beside a laptop */
+  .side-phone { position: absolute !important; left: 0; bottom: -4px; width: 228px; border-radius: 42px; padding: 9px; }
+  .side-phone .screen { border-radius: 32px; }
+  .side-phone::after { top: 17px; width: 64px; height: 18px; margin-left: -32px; }
+  .with-phone .laptop { margin-left: 96px; }
 
   /* ---- numbered overview list ---- */
   .overview { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; margin-top: 30px; }
@@ -32,56 +38,66 @@
   .ov p { font-size: 27px; color: var(--sage); line-height: 1.45; margin-top: 4px; }
 
   /* ---- split layout: text + phone ---- */
-  .split { display: grid; grid-template-columns: 1fr 340px; gap: 36px; flex: 1; align-items: center; margin-top: 18px; min-height: 0; }
-  .split .fitbox { height: 100%; display: flex; align-items: center; justify-content: center; }
+  .split { display: grid; grid-template-columns: 1fr 330px; gap: 36px; flex: 1; align-items: center; margin-top: 18px; min-height: 0; }
+  .split .fitbox { height: 100%; margin-top: 0; align-items: center; }
   .split .phone { width: 330px; }
   .bullets { display: flex; flex-direction: column; gap: 16px; }
-  .bullets li { list-style: none; display: flex; gap: 16px; align-items: center; font-size: 29px; font-weight: 500; line-height: 1.4; padding: 18px 20px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); }
+  .bullets li { list-style: none; display: flex; gap: 16px; align-items: center; font-size: 28px; font-weight: 500; line-height: 1.4; padding: 18px 20px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); }
   .bullets li .ic { flex: none; width: 52px; height: 52px; border-radius: 14px; background: var(--mint-dim); display: grid; place-items: center; }
   .bullets li .ic svg { width: 28px; height: 28px; stroke: var(--mint); }
 
-  /* ---- languages ---- */
-  .lang-stage { position: relative; flex: 1; margin-top: 26px; }
-  .lang-stage .browser { position: absolute; width: 740px; }
-  .lang-stage .browser .screen { aspect-ratio: 16 / 10; }
-  .lang-stage .b-ar { top: 0; right: 0; }
-  .lang-stage .b-en { bottom: 0; left: 0; }
-  .lang-stage .tag { position: absolute; z-index: 4; font-family: var(--head); font-weight: 800; font-size: 30px; padding: 10px 24px; border-radius: 16px; background: var(--mint); color: var(--bg-0); box-shadow: 0 12px 30px rgba(0,0,0,.4); }
+  /* ---- two overlapping browsers ---- */
+  .duo { position: relative; flex: 1; margin-top: 26px; min-height: 0; }
+  .duo .browser { position: absolute; width: 730px; border-color: rgba(134,227,181,.38); }
+  .duo .browser .screen { aspect-ratio: 16 / 10; }
+  .duo .b1 { top: 0; right: 0; }
+  .duo .b2 { bottom: 0; left: 0; }
+  .duo .tag { position: absolute; z-index: 4; font-family: var(--head); font-weight: 800; font-size: 28px; padding: 10px 24px; border-radius: 16px; background: var(--mint); color: var(--bg-0); box-shadow: 0 12px 30px rgba(0,0,0,.4); }
 
   /* ---- phones row ---- */
   .phones { display: flex; justify-content: center; align-items: flex-end; gap: 26px; flex: 1; margin-top: 30px; min-height: 0; }
-  .phones .phone { width: 280px; }
-  .phones .phone.mid { transform: translateY(-40px); }
+  .phones .ph-col { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .phones .phone { width: 270px; }
+  .phones .mid { transform: translateY(-36px); }
+  .phones .lbl { font-family: var(--head); font-weight: 800; font-size: 24px; padding: 6px 18px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line-2); display: inline-flex; gap: 8px; align-items: center; }
+  .phones .lbl svg { width: 24px; height: 24px; stroke: var(--mint); }
 
   /* ---- steps / flow ---- */
   .steps { display: flex; gap: 14px; margin-top: 22px; }
   .step { flex: 1; display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); }
   .step .num { flex: none; font-family: var(--head); font-weight: 800; font-size: 24px; width: 46px; height: 46px; border-radius: 14px; background: var(--mint); color: var(--bg-0); display: grid; place-items: center; }
   .step h4 { font-family: var(--body); font-weight: 600; font-size: 25px; line-height: 1.35; }
-  .flow { display: flex; align-items: stretch; gap: 0; margin-top: 24px; }
-  .flow .node { flex: 1; padding: 18px 16px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); text-align: center; }
+  .flow { display: flex; align-items: stretch; margin-top: 22px; }
+  .flow .node { flex: 1; padding: 16px 14px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); text-align: center; }
   .flow .node.hl { background: var(--mint); border-color: var(--mint); color: var(--bg-0); }
-  .flow .node svg { width: 38px; height: 38px; stroke: var(--mint); }
+  .flow .node svg { width: 36px; height: 36px; stroke: var(--mint); }
   .flow .node.hl svg { stroke: var(--bg-0); }
-  .flow .node h4 { font-family: var(--head); font-weight: 800; font-size: 26px; line-height: 1.35; margin-top: 6px; }
+  .flow .node h4 { font-family: var(--head); font-weight: 800; font-size: 26px; line-height: 1.35; margin-top: 4px; }
   .flow .node p { font-size: 20px; line-height: 1.4; color: var(--sage); margin-top: 2px; }
   .flow .node.hl p { color: rgba(12,31,24,.75); }
-  .flow .arr { flex: none; width: 46px; display: grid; place-items: center; }
-  .flow .arr svg { width: 34px; height: 34px; stroke: var(--mint); }
+  .flow .arr { flex: none; width: 44px; display: grid; place-items: center; }
+  .flow .arr svg { width: 32px; height: 32px; stroke: var(--mint); }
 
-  /* ---- browser in remaining space ---- */
-  .fitbox { position: relative; flex: 1; min-height: 0; margin-top: 24px; display: flex; align-items: flex-end; justify-content: center; }
-  .fitbox > .browser { width: 952px; }
+  /* ---- browser filling the remaining space ---- */
+  .fitbox { position: relative; flex: 1; min-height: 0; margin-top: 28px; display: flex; align-items: flex-start; justify-content: center; }
+  .fitbox > .browser { width: 952px; border-color: rgba(134,227,181,.38); box-shadow: 0 0 0 6px rgba(134,227,181,.06), 0 40px 70px rgba(0,0,0,.5); }
+  .chips.tight { gap: 10px; }
+  .chips.below { justify-content: center; margin-top: 34px; }
+  .chips.tight .chip { font-size: 23px; padding: 10px 16px 10px 14px; gap: 8px; }
+  .chips.tight .chip svg { width: 26px; height: 26px; }
   .fitbox > .browser .screen { aspect-ratio: 16 / 10; }
 
-  /* ---- sync ---- */
-  .sync { position: relative; flex: 1; margin-top: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: center; min-height: 0; }
-  .sync .sw { position: relative; padding-top: 22px; }
-  .sync .browser .screen { aspect-ratio: 10 / 12; }
-  .sync .knot { position: absolute; left: 50%; top: 52%; transform: translate(-50%,-50%); z-index: 4; width: 100px; height: 100px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; box-shadow: 0 0 0 12px rgba(134,227,181,.16), 0 20px 40px rgba(0,0,0,.5); }
-  .sync .knot svg { width: 48px; height: 48px; stroke: var(--bg-0); }
-  .sync .cap { position: absolute; top: 0; inset-inline-start: 22px; z-index: 4; font-family: var(--head); font-weight: 800; font-size: 24px; background: var(--bg-1); border: 1px solid var(--mint); color: var(--mint); padding: 6px 18px; border-radius: 12px; }
+  /* ---- pills grid (dashboard sections) ---- */
+  .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; font-size: 23px; font-weight: 500; padding: 8px 16px 8px 14px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--line); }
+  .pill svg { width: 24px; height: 24px; stroke: var(--mint); }
 
+  .feats.compact { gap: 12px; }
+  .feats.compact .feat { padding: 14px 18px; gap: 14px; align-items: center; }
+  .feats.compact .feat .ic { width: 50px; height: 50px; border-radius: 14px; }
+  .feats.compact .feat .ic svg { width: 28px; height: 28px; }
+  .feats.compact .feat h3 { font-size: 27px; }
+  .feats.compact .feat p { font-size: 21px; margin-top: 0; }
   .feats.six { flex: 1; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 18px; margin-top: 32px; }
   .feats.six .feat { flex-direction: column; justify-content: center; gap: 14px; padding: 24px 26px; }
   .feats.six .feat .ic { width: 70px; height: 70px; border-radius: 20px; }
@@ -90,13 +106,13 @@
   .feats.six .feat p { font-size: 26px; }
 
   /* ---- CTA ---- */
-  .cta .content { top: 128px; justify-content: center; }
-  .cta .mr-big { width: 210px; height: 210px; border-radius: 56px; margin: 0 auto; display: grid; place-items: center; background: linear-gradient(145deg, #3553cf, #1f3393); box-shadow: 0 30px 60px rgba(0,0,0,.45), 0 0 0 14px rgba(70,104,230,.14), 0 0 0 30px rgba(70,104,230,.06); }
-  .cta .mr-big img { width: 122px; }
-  .cta h1.title { font-size: 74px; margin-top: 48px; }
-  .cta .url { margin: 40px auto 0; display: inline-flex; align-items: center; gap: 16px; direction: ltr; font-family: var(--head); font-weight: 800; font-size: 44px; color: var(--bg-0); background: var(--mint); padding: 20px 40px; border-radius: 24px; box-shadow: 0 20px 50px rgba(76,199,145,.3); }
+  .cta .content { justify-content: center; }
+  .cta .mr-big { width: 190px; height: 190px; border-radius: 52px; margin: 0 auto; display: grid; place-items: center; background: linear-gradient(145deg, #3553cf, #1f3393); box-shadow: 0 30px 60px rgba(0,0,0,.45), 0 0 0 14px rgba(70,104,230,.14), 0 0 0 30px rgba(70,104,230,.06); }
+  .cta .mr-big img { width: 110px; }
+  .cta h1.title { font-size: 72px; margin-top: 44px; }
+  .cta .url { margin: 36px auto 0; display: inline-flex; align-items: center; gap: 16px; direction: ltr; font-family: var(--head); font-weight: 800; font-size: 44px; color: var(--bg-0); background: var(--mint); padding: 18px 40px; border-radius: 24px; box-shadow: 0 20px 50px rgba(76,199,145,.3); }
   .cta .url svg { width: 44px; height: 44px; stroke: var(--bg-0); }
-  .cta .services { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 40px auto 0; width: 720px; }
+  .cta .services { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 36px auto 0; width: 720px; }
   .cta .services .chip { justify-content: center; }
 </style>
 </head>
@@ -111,33 +127,39 @@
     <h2>لـ<em>شركة المسك</em> للخدمات النفطية</h2>
     <div class="site-pill"><i data-icon="globe"></i>msk-gf.com</div>
     <div class="stage">
-      <div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-home-ar.png" alt="الرئيسية — عربي"></div></div><div class="base"></div></div>
-      <div class="phone float"><div class="screen"><img src="shots/m-home-ar.png" alt="موبايل"></div></div>
+      <div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-home-ar.png" alt="الرئيسية"></div></div><div class="base"></div></div>
+      <div class="phone float"><div class="screen"><img src="shots/m-home-ar.png" alt="الرئيسية — موبايل"></div></div>
     </div>
   </div>
 </section>
 
-<!-- 02 — What we built (section 1) -->
+<!-- 02 — What we built -->
 <section class="slide" data-section="1" style="--gx:10%;--gy:10%;--rx:20%;--ry:85%">
   <div class="content">
     <div class="eyebrow"><i data-icon="building"></i> نبذة عن المشروع</div>
     <h1 class="title" style="font-size:64px;white-space:nowrap">ماذا صممنا لشركة <em>المسك</em>؟</h1>
     <div class="overview">
-      <div class="ov"><span class="num">1</span><div><h3>موقع إلكتروني تعريفي متكامل</h3><p>صفحات تعرض الشركة وخدماتها ومشاريعها وأخبارها</p></div></div>
-      <div class="ov"><span class="num">2</span><div><h3>باللغتين العربية والإنكليزية</h3><p>مع ترجمة تلقائية للمحتوى من العربية إلى الإنكليزية</p></div></div>
+      <div class="ov"><span class="num">1</span><div><h3>موقع إلكتروني متكامل</h3><p>10 صفحات تعرض الشركة وخدماتها ومشاريعها</p></div></div>
+      <div class="ov"><span class="num">2</span><div><h3>بلغتين: العربية والإنكليزية</h3><p>مع وضع ليلي ووضع نهاري</p></div></div>
       <div class="ov"><span class="num">3</span><div><h3>متوافق مع جميع الأجهزة</h3><p>الحاسوب والتابلت والموبايل</p></div></div>
-      <div class="ov"><span class="num">4</span><div><h3>لوحة تحكم متطورة</h3><p>لإدارة الموقع بالكامل: الأخبار، الصفحات، والتوظيف</p></div></div>
+      <div class="ov"><span class="num">4</span><div><h3>لوحة تحكم متطورة</h3><p>17 قسماً لإدارة الموقع والتوظيف بالكامل</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- 03 — Home page (section 2) -->
+<!-- 03 — Home -->
 <section class="slide" data-section="2" style="--gx:90%;--gy:40%;--dx:85%;--dy:70%">
   <div class="content">
     <div class="eyebrow"><span class="n">1</span> صفحات الموقع</div>
     <h1 class="title">الصفحة الرئيسية</h1>
-    <p class="lead">أول ما يراه الزائر: تعريف سريع بالشركة وخدماتها وآخر أخبارها.</p>
+    <p class="lead">واجهة تعرّف بالشركة من أول نظرة، وتختصر كل أقسام الموقع.</p>
     <div class="stage"><div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-home-ar.png" alt="الرئيسية"></div></div><div class="base"></div></div></div>
+    <div class="chips tight below">
+      <span class="chip"><i data-icon="image"></i>سلايدر متحرك</span>
+      <span class="chip"><i data-icon="chart"></i>أرقام الإنجازات</span>
+      <span class="chip"><i data-icon="monitor"></i>فيديو تعريفي</span>
+      <span class="chip"><i data-icon="news"></i>آخر الأخبار</span>
+    </div>
   </div>
 </section>
 
@@ -146,8 +168,14 @@
   <div class="content">
     <div class="eyebrow"><span class="n">2</span> صفحات الموقع</div>
     <h1 class="title">صفحة من نحن</h1>
-    <p class="lead">تعرض تاريخ الشركة ورؤيتها ورسالتها وقيمها بأسلوب احترافي.</p>
+    <p class="lead">الملف التعريفي للشركة: تاريخها ونشاطاتها ورؤيتها وقيمها.</p>
     <div class="stage"><div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-about-ar.png" alt="من نحن"></div></div><div class="base"></div></div></div>
+    <div class="chips tight below">
+      <span class="chip"><i data-icon="file"></i>الملف التعريفي</span>
+      <span class="chip"><i data-icon="chart"></i>مؤشرات وإحصائيات</span>
+      <span class="chip"><i data-icon="layers"></i>ركائز الشركة</span>
+      <span class="chip"><i data-icon="users"></i>فريق الإدارة</span>
+    </div>
   </div>
 </section>
 
@@ -156,204 +184,250 @@
   <div class="content">
     <div class="eyebrow"><span class="n">3</span> صفحات الموقع</div>
     <h1 class="title">صفحة الخدمات</h1>
-    <p class="lead">عرض منظم لخدمات الشركة في قطاع النفط، مع التفاصيل والصور.</p>
-    <div class="stage"><div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-services-ar.png" alt="الخدمات"></div></div><div class="base"></div></div></div>
+    <p class="lead">خدمات الشركة النفطية بالتفصيل، مع زر <b>طلب الخدمة</b> مباشرة.</p>
+    <div class="stage"><div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-services-ar-s.png" alt="الخدمات"></div></div><div class="base"></div></div></div>
+    <div class="chips tight below">
+      <span class="chip"><i data-icon="drop"></i>خطوط الأنابيب</span>
+      <span class="chip"><i data-icon="building"></i>الهياكل الفولاذية</span>
+      <span class="chip"><i data-icon="layers"></i>الخزانات</span>
+      <span class="chip"><i data-icon="zap"></i>معالجة النفط والغاز</span>
+    </div>
   </div>
 </section>
 
-<!-- 06 — Projects -->
+<!-- 06 — Projects & gallery -->
 <section class="slide" data-section="2" style="--gx:50%;--gy:10%;--rx:50%;--ry:90%">
   <div class="content">
     <div class="eyebrow"><span class="n">4</span> صفحات الموقع</div>
-    <h1 class="title">صفحة المشاريع</h1>
-    <p class="lead">معرض لمشاريع الشركة وأعمالها المنجزة يعزز ثقة العملاء.</p>
-    <div class="stage"><div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-projects-ar.png" alt="المشاريع"></div></div><div class="base"></div></div></div>
+    <h1 class="title">المشاريع ومعرض الصور</h1>
+    <p class="lead">مشاريع مصنفة حسب النوع مع بحث سريع، ومعرض للصور والفيديوهات.</p>
+    <div class="stage with-phone">
+      <div class="laptop" style="width:856px"><div class="lid"><div class="screen"><img src="shots/web-projects-ar-s.png" alt="المشاريع"></div></div><div class="base"></div></div>
+      <div class="phone side-phone"><div class="screen"><img src="shots/m-gallery-ar-s.png" alt="معرض الصور — موبايل"></div></div>
+    </div>
+    <div class="chips tight below">
+      <span class="chip"><i data-icon="search"></i>بحث سريع</span>
+      <span class="chip"><i data-icon="sliders"></i>تصنيف حسب النوع</span>
+      <span class="chip"><i data-icon="clock"></i>حالة المشروع</span>
+      <span class="chip"><i data-icon="image"></i>صور وفيديوهات</span>
+    </div>
   </div>
 </section>
 
-<!-- 07 — News -->
+<!-- 07 — HSE & certifications -->
 <section class="slide" data-section="2" style="--gx:90%;--gy:60%;--dx:20%;--dy:30%">
   <div class="content">
     <div class="eyebrow"><span class="n">5</span> صفحات الموقع</div>
-    <h1 class="title">صفحة الأخبار</h1>
-    <p class="lead">آخر أخبار الشركة وفعالياتها، وتُدار بالكامل من لوحة التحكم.</p>
-    <div class="stage">
-      <div class="laptop" style="width:780px;margin-left:110px"><div class="lid"><div class="screen"><img src="shots/web-news-ar.png" alt="الأخبار"></div></div><div class="base"></div></div>
-      <div class="phone" style="position:absolute;left:20px;bottom:-4px;width:220px;border-radius:40px;padding:9px"><div class="screen" style="border-radius:32px"><img src="shots/m-news-ar.png" alt="الأخبار — موبايل"></div></div>
+    <h1 class="title">السلامة والشهادات</h1>
+    <p class="lead">سياسات الصحة والسلامة والبيئة، وشهادات الأيزو والاعتمادات الرسمية.</p>
+    <div class="stage with-phone">
+      <div class="laptop" style="width:856px"><div class="lid"><div class="screen"><img src="shots/web-hse-ar.png" alt="الصحة والسلامة والبيئة"></div></div><div class="base"></div></div>
+      <div class="phone side-phone"><div class="screen"><img src="shots/m-certifications-ar-s.png" alt="الشهادات — موبايل"></div></div>
+    </div>
+    <div class="chips tight below">
+      <span class="chip"><i data-icon="shield"></i>السياسات</span>
+      <span class="chip"><i data-icon="chart"></i>الإحصائيات</span>
+      <span class="chip"><i data-icon="check"></i>شهادات الأيزو</span>
+      <span class="chip"><i data-icon="search"></i>بحث في الشهادات</span>
     </div>
   </div>
 </section>
 
-<!-- 08 — Careers -->
+<!-- 08 — News -->
 <section class="slide" data-section="2" style="--gx:10%;--gy:50%;--rx:85%;--ry:20%">
   <div class="content">
     <div class="eyebrow"><span class="n">6</span> صفحات الموقع</div>
-    <h1 class="title">صفحة التوظيف</h1>
-    <p class="lead">عرض الوظائف الشاغرة والتقديم عليها مباشرة مع <b>رفع السيرة الذاتية</b>.</p>
-    <div class="stage"><div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-careers-ar.png" alt="التوظيف"></div></div><div class="base"></div></div></div>
-  </div>
-</section>
-
-<!-- 09 — Contact -->
-<section class="slide" data-section="2" style="--gx:85%;--gy:85%;--dx:80%;--dy:20%">
-  <div class="content">
-    <div class="eyebrow"><span class="n">7</span> صفحات الموقع</div>
-    <h1 class="title">صفحة اتصل بنا</h1>
-    <div class="split">
-      <ul class="bullets">
-        <li><span class="ic"><i data-icon="mail"></i></span>نموذج مراسلة مباشر</li>
-        <li><span class="ic"><i data-icon="pin"></i></span>موقع الشركة على الخريطة</li>
-        <li><span class="ic"><i data-icon="call"></i></span>أرقام الهواتف والبريد</li>
-        <li><span class="ic"><i data-icon="globe"></i></span>حسابات التواصل الاجتماعي</li>
-      </ul>
-      <div class="fitbox" style="margin-top:0"><div class="phone"><div class="screen"><img src="shots/m-contact-ar.png" alt="اتصل بنا — موبايل"></div></div></div>
+    <h1 class="title">صفحة الأخبار</h1>
+    <p class="lead">آخر أخبار الشركة مع البحث، ومشاركة الخبر على مواقع التواصل.</p>
+    <div class="stage with-phone">
+      <div class="laptop" style="width:856px"><div class="lid"><div class="screen"><img src="shots/web-news-ar-s.png" alt="الأخبار"></div></div><div class="base"></div></div>
+      <div class="phone side-phone"><div class="screen"><img src="shots/m-news-ar-s.png" alt="الأخبار — موبايل"></div></div>
+    </div>
+    <div class="chips tight below">
+      <span class="chip"><i data-icon="search"></i>بحث في الأخبار</span>
+      <span class="chip"><i data-icon="file"></i>صفحة لكل خبر</span>
+      <span class="chip"><i data-icon="globe"></i>مشاركة الخبر</span>
+      <span class="chip"><i data-icon="layers"></i>تصفح بالصفحات</span>
     </div>
   </div>
 </section>
 
-<!-- 10 — Languages -->
+<!-- 09 — Careers -->
+<section class="slide" data-section="2" style="--gx:85%;--gy:85%;--dx:80%;--dy:20%">
+  <div class="content">
+    <div class="eyebrow"><span class="n">7</span> صفحات الموقع</div>
+    <h1 class="title">الوظائف والتدريب</h1>
+    <p class="lead">الوظائف الشاغرة وفرص التدريب، والتقديم مباشرة مع <b>رفع السيرة الذاتية</b>.</p>
+    <div class="stage">
+      <div class="laptop"><div class="lid"><div class="screen"><img src="shots/web-careers-ar.png" alt="الوظائف والتدريب" style="--z:1.25;--o:92% 0%"></div></div><div class="base"></div></div>
+    </div>
+    <div class="chips tight below">
+      <span class="chip"><i data-icon="briefcase"></i>الوظائف المتاحة</span>
+      <span class="chip"><i data-icon="users"></i>فرص التدريب</span>
+      <span class="chip"><i data-icon="file"></i>تقديم إلكتروني</span>
+      <span class="chip"><i data-icon="upload"></i>رفع الـ CV</span>
+    </div>
+  </div>
+</section>
+
+<!-- 10 — Contact -->
+<section class="slide" data-section="2" style="--gx:15%;--gy:60%;--rx:80%;--ry:30%">
+  <div class="content">
+    <div class="eyebrow"><span class="n">8</span> صفحات الموقع</div>
+    <h1 class="title">صفحة اتصل بنا</h1>
+    <div class="split">
+      <ul class="bullets">
+        <li><span class="ic"><i data-icon="pin"></i></span>عناوين المكاتب والخريطة</li>
+        <li><span class="ic"><i data-icon="call"></i></span>أرقام الهواتف والبريد</li>
+        <li><span class="ic"><i data-icon="mail"></i></span>نموذج مراسلة يصل للوحة التحكم</li>
+        <li><span class="ic"><i data-icon="phone"></i></span>تواصل مباشر عبر واتساب</li>
+      </ul>
+      <div class="fitbox"><div class="phone"><div class="screen"><img src="shots/m-contact-ar-s.png" alt="اتصل بنا — موبايل"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 — Languages -->
 <section class="slide" data-section="2" style="--gx:50%;--gy:60%;--dx:50%;--dy:60%">
   <div class="content">
     <div class="eyebrow"><i data-icon="languages"></i> مزايا الموقع</div>
     <h1 class="title">الموقع باللغتين<br><em>العربية والإنكليزية</em></h1>
     <p class="lead">تبديل اللغة بضغطة زر، مع ضبط اتجاه الصفحة تلقائياً.</p>
-    <div class="lang-stage">
-      <div class="browser b-ar"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com</span></div><div class="screen"><img src="shots/web-home-ar.png" alt="النسخة العربية"></div></div>
-      <div class="browser b-en"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com/en</span></div><div class="screen"><img src="shots/web-home-en.png" alt="English version"></div></div>
+    <div class="duo">
+      <div class="browser b1"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com</span></div><div class="screen"><img src="shots/web-home-ar.png" alt="النسخة العربية"></div></div>
+      <div class="browser b2"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com</span></div><div class="screen"><img src="shots/web-home-en.png" alt="English version"></div></div>
       <span class="tag" style="top:70px;right:-14px">العربية</span>
       <span class="tag" style="bottom:30px;left:-14px">English</span>
     </div>
   </div>
 </section>
 
-<!-- 11 — Responsive -->
+<!-- 12 — Mobile + dark/light -->
 <section class="slide" data-section="2" style="--gx:50%;--gy:90%;--dx:50%;--dy:15%">
   <div class="content center">
     <div class="eyebrow"><i data-icon="phone"></i> مزايا الموقع</div>
-    <h1 class="title">متوافق مع الموبايل<br><em>وجميع الشاشات</em></h1>
-    <p class="lead">يتكيّف التصميم تلقائياً مع حجم الشاشة.</p>
+    <h1 class="title">متوافق مع الموبايل<br><em>بوضع ليلي ونهاري</em></h1>
     <div class="phones">
-      <div class="phone"><div class="screen"><img src="shots/m-news-ar.png" alt="الأخبار — موبايل"></div></div>
-      <div class="phone mid"><div class="screen"><img src="shots/m-home-ar.png" alt="الرئيسية — موبايل"></div></div>
-      <div class="phone"><div class="screen"><img src="shots/m-menu-ar.png" alt="القائمة — موبايل"></div></div>
+      <div class="ph-col"><div class="phone"><div class="screen"><img src="shots/m-projects-ar-s.png" alt="المشاريع — موبايل"></div></div><span class="lbl">المشاريع</span></div>
+      <div class="ph-col mid"><div class="phone"><div class="screen"><img src="shots/m-home-ar.png" alt="الوضع الليلي"></div></div><span class="lbl">الوضع الليلي</span></div>
+      <div class="ph-col"><div class="phone"><div class="screen"><img src="shots/m-home-ar-light.png" alt="الوضع النهاري"></div></div><span class="lbl">الوضع النهاري</span></div>
     </div>
   </div>
 </section>
 
-<!-- 12 — Dashboard intro (section 3) -->
+<!-- 13 — Dashboard: intro -->
 <section class="slide" data-section="3" style="--gx:50%;--gy:30%;--rx:50%;--ry:70%">
   <div class="content">
     <div class="eyebrow"><span class="n">1</span> لوحة التحكم</div>
     <h1 class="title">لوحة تحكم متطورة<br><em>لإدارة الموقع بالكامل</em></h1>
-    <p class="lead">تدير منها كل محتوى الموقع بنفسك، بدون الحاجة إلى مبرمج.</p>
-    <div class="chips">
+    <p class="lead">17 قسماً لإدارة كل محتوى الموقع، بدون مبرمج.</p>
+    <div class="chips tight">
       <span class="chip"><i data-icon="lock"></i>دخول آمن</span>
-      <span class="chip"><i data-icon="mouse"></i>سهلة الاستخدام</span>
-      <span class="chip"><i data-icon="zap"></i>تحديث فوري</span>
+      <span class="chip"><i data-icon="languages"></i>عربي / English</span>
+      <span class="chip"><i data-icon="upload"></i>تصدير واستيراد البيانات</span>
     </div>
-    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — لوحة التحكم</span></div><div class="screen"><img src="shots/dash-login.png" alt="تسجيل الدخول"></div></div></div>
+    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — لوحة التحكم</span></div><div class="screen"><img src="shots/dash-projects-ar.png" alt="لوحة التحكم" style="--z:1.3;--o:100% 0%"></div></div></div>
   </div>
 </section>
 
-<!-- 13 — Dashboard home -->
+<!-- 14 — Dashboard: every page -->
 <section class="slide" data-section="3" style="--gx:85%;--gy:20%;--dx:15%;--dy:80%">
   <div class="content">
     <div class="eyebrow"><span class="n">2</span> لوحة التحكم</div>
-    <h1 class="title">الشاشة الرئيسية<br><em>للوحة التحكم</em></h1>
-    <p class="lead">كل أقسام الموقع مرتبة في قائمة واحدة: الأخبار، الصفحات، الوظائف، والإعدادات.</p>
-    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — لوحة التحكم</span></div><div class="screen"><img src="shots/dash-home.png" alt="الرئيسية — لوحة التحكم"></div></div></div>
+    <h1 class="title sm">كل صفحة في الموقع<br><em>تُعدَّل من لوحة التحكم</em></h1>
+    <div class="pills">
+      <span class="pill"><i data-icon="building"></i>الرئيسية</span>
+      <span class="pill"><i data-icon="users"></i>من نحن</span>
+      <span class="pill"><i data-icon="drop"></i>الخدمات</span>
+      <span class="pill"><i data-icon="layers"></i>المشاريع</span>
+      <span class="pill"><i data-icon="image"></i>معرض الصور</span>
+      <span class="pill"><i data-icon="shield"></i>السلامة والبيئة</span>
+      <span class="pill"><i data-icon="check"></i>الشهادات</span>
+      <span class="pill"><i data-icon="news"></i>الأخبار</span>
+      <span class="pill"><i data-icon="sliders"></i>الإعدادات العامة</span>
+    </div>
+    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — تعديل الرئيسية</span></div><div class="screen"><img src="shots/dash-home-ar.png" alt="تعديل الرئيسية" style="--z:1.45;--o:100% 22%"></div></div></div>
   </div>
 </section>
 
-<!-- 14 — Publish news -->
+<!-- 15 — Dashboard: news -->
 <section class="slide" data-section="3" style="--gx:15%;--gy:60%;--rx:80%;--ry:30%">
   <div class="content">
     <div class="eyebrow"><span class="n">3</span> لوحة التحكم</div>
-    <h1 class="title">نشر خبر جديد<br><em>بثلاث خطوات</em></h1>
+    <h1 class="title">إدارة الأخبار</h1>
+    <p class="lead">إضافة الأخبار وتعديلها وحذفها، وتظهر فوراً على الموقع.</p>
     <div class="steps">
-      <div class="step"><span class="num">1</span><h4>اكتب العنوان والتفاصيل</h4></div>
-      <div class="step"><span class="num">2</span><h4>أضف صور الخبر</h4></div>
-      <div class="step"><span class="num">3</span><h4>اضغط نشر</h4></div>
+      <div class="step"><span class="num">1</span><h4>اكتب الخبر</h4></div>
+      <div class="step"><span class="num">2</span><h4>أضف الصورة</h4></div>
+      <div class="step"><span class="num">3</span><h4>احفظ… ويُنشر</h4></div>
     </div>
-    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — إضافة خبر</span></div><div class="screen"><img src="shots/dash-news-editor.png" alt="إضافة خبر"></div></div></div>
+    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — الأخبار</span></div><div class="screen"><img src="shots/dash-news-ar.png" alt="إدارة الأخبار" style="--z:1.45;--o:100% 40%"></div></div></div>
   </div>
 </section>
 
-<!-- 15 — Automatic translation -->
+<!-- 16 — Dashboard: automatic translation -->
 <section class="slide" data-section="3" style="--gx:50%;--gy:50%;--dx:50%;--dy:50%">
   <div class="content">
     <div class="eyebrow"><span class="n">4</span> لوحة التحكم</div>
     <h1 class="title sm">ترجمة تلقائية<br><em>من العربية إلى الإنكليزية</em></h1>
-    <p class="lead">تكتب المحتوى بالعربية فقط، والنسخة الإنكليزية تُنشأ تلقائياً.</p>
     <div class="flow">
       <div class="node"><i data-icon="edit"></i><h4>تكتب بالعربية</h4><p>خبر أو أي محتوى</p></div>
       <div class="arr"><i data-icon="arrowLeft"></i></div>
       <div class="node hl"><i data-icon="languages"></i><h4>ترجمة تلقائية</h4><p>بدون إدخال مرتين</p></div>
       <div class="arr"><i data-icon="arrowLeft"></i></div>
-      <div class="node"><i data-icon="globe"></i><h4>يظهر بالإنكليزية</h4><p>في الموقع مباشرة</p></div>
+      <div class="node"><i data-icon="globe"></i><h4>الموقع الإنكليزي</h4><p>يتحدّث مباشرة</p></div>
     </div>
-    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — الترجمة التلقائية</span></div><div class="screen"><img src="shots/dash-translate.png" alt="الترجمة التلقائية"></div></div></div>
+    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — تعديل الخبر</span></div><div class="screen"><img src="shots/dash-news-edit-ar.png" alt="تعديل الخبر بالعربية والإنكليزية" style="--z:1.25;--o:0% 8%"></div></div></div>
   </div>
 </section>
 
-<!-- 16 — Edit page content, both languages update -->
+<!-- 17 — Dashboard: recruitment -->
 <section class="slide" data-section="3" style="--gx:50%;--gy:15%;--rx:50%;--ry:80%">
   <div class="content">
     <div class="eyebrow"><span class="n">5</span> لوحة التحكم</div>
-    <h1 class="title sm">تعديل محتوى الصفحات<br><em>ينعكس على اللغتين</em></h1>
-    <p class="lead">أي تعديل على الموقع العربي يظهر مباشرة في الموقع الإنكليزي.</p>
-    <div class="sync">
-      <div class="sw"><span class="cap">العربية</span><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">msk-gf.com</span></div><div class="screen"><img src="shots/web-news-detail-ar.png" alt="عربي"></div></div></div>
-      <div class="sw"><span class="cap">English</span><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">msk-gf.com/en</span></div><div class="screen"><img src="shots/web-news-detail-en.png" alt="English"></div></div></div>
-      <span class="knot"><i data-icon="sync"></i></span>
+    <h1 class="title">نظام توظيف متكامل</h1>
+    <div class="feats compact" style="margin-top:22px">
+      <div class="feat"><span class="ic"><i data-icon="briefcase"></i></span><div><h3>وظائف وتدريب</h3><p>نشر الشواغر وفرص التدريب</p></div></div>
+      <div class="feat"><span class="ic"><i data-icon="file"></i></span><div><h3>طلبات التقديم</h3><p>فرز حسب الحالة والتاريخ</p></div></div>
+      <div class="feat"><span class="ic"><i data-icon="phone"></i></span><div><h3>إشعارات واتساب</h3><p>رسالة عند كل طلب جديد</p></div></div>
+      <div class="feat"><span class="ic"><i data-icon="users"></i></span><div><h3>إدارة الكادر</h3><p>فريق الشركة في الموقع</p></div></div>
     </div>
+    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — إضافة فرصة</span></div><div class="screen"><img src="shots/dash-job-add-ar.png" alt="إضافة وظيفة" style="--z:1.6;--o:40% 8%"></div></div></div>
   </div>
 </section>
 
-<!-- 17 — Careers management -->
+<!-- 18 — Dashboard: inbox & admins -->
 <section class="slide" data-section="3" style="--gx:90%;--gy:80%;--dx:20%;--dy:20%">
   <div class="content">
     <div class="eyebrow"><span class="n">6</span> لوحة التحكم</div>
-    <h1 class="title sm">إدارة الوظائف<br><em>وطلبات التوظيف</em></h1>
-    <p class="lead">نشر الوظائف الشاغرة، واستلام طلبات المتقدمين وسيرهم الذاتية في مكان واحد.</p>
-    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — التوظيف</span></div><div class="screen"><img src="shots/dash-careers.png" alt="إدارة التوظيف"></div></div></div>
+    <h1 class="title sm">رسائل العملاء<br><em>وحسابات المديرين</em></h1>
+    <div class="feats compact" style="grid-template-columns:repeat(3,1fr);margin-top:22px">
+      <div class="feat" style="flex-direction:column;gap:8px"><span class="ic"><i data-icon="mail"></i></span><div><h3>صندوق الوارد</h3><p>رسائل نموذج التواصل</p></div></div>
+      <div class="feat" style="flex-direction:column;gap:8px"><span class="ic"><i data-icon="lock"></i></span><div><h3>المديرون</h3><p>حسابات بكلمات مشفرة</p></div></div>
+      <div class="feat" style="flex-direction:column;gap:8px"><span class="ic"><i data-icon="upload"></i></span><div><h3>نسخ احتياطي</h3><p>تصدير واستيراد البيانات</p></div></div>
+    </div>
+    <div class="fitbox"><div class="browser"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><i data-icon="lock"></i>msk-gf.com — صندوق الوارد</span></div><div class="screen"><img src="shots/dash-inbox-ar.png" alt="صندوق الوارد" style="--z:1.3;--o:9% 45%"></div></div></div>
   </div>
 </section>
 
-<!-- 18 — How the dashboard helps -->
+<!-- 19 — Dashboard: how it helps -->
 <section class="slide" data-section="3" style="--gx:15%;--gy:15%;--rx:85%;--ry:85%">
   <div class="content">
     <div class="eyebrow"><span class="n">7</span> لوحة التحكم</div>
     <h1 class="title">كيف تساعدك<br><em>لوحة التحكم؟</em></h1>
     <div class="feats six">
-      <div class="feat"><span class="ic"><i data-icon="clock"></i></span><div><h3>توفير الوقت</h3><p>المحتوى يُكتب مرة واحدة فقط</p></div></div>
+      <div class="feat"><span class="ic"><i data-icon="clock"></i></span><div><h3>توفير الوقت</h3><p>المحتوى يُكتب مرة واحدة</p></div></div>
       <div class="feat"><span class="ic"><i data-icon="users"></i></span><div><h3>بدون مبرمج</h3><p>فريقك يحدّث الموقع بنفسه</p></div></div>
       <div class="feat"><span class="ic"><i data-icon="zap"></i></span><div><h3>تحديث فوري</h3><p>التعديل يظهر مباشرة</p></div></div>
-      <div class="feat"><span class="ic"><i data-icon="languages"></i></span><div><h3>لغتان بجهد واحد</h3><p>الترجمة تتم تلقائياً</p></div></div>
-      <div class="feat"><span class="ic"><i data-icon="layers"></i></span><div><h3>محتوى منظم</h3><p>كل قسم في مكانه</p></div></div>
-      <div class="feat"><span class="ic"><i data-icon="shield"></i></span><div><h3>أمان</h3><p>دخول محمي بكلمة مرور</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 19 — Summary (section 4) -->
-<section class="slide" data-section="4" style="--gx:50%;--gy:10%;--dx:50%;--dy:85%">
-  <div class="content">
-    <div class="eyebrow"><i data-icon="check"></i> الخلاصة</div>
-    <h1 class="title">مزايا موقع<br><em>شركة المسك</em></h1>
-    <div class="feats six">
-      <div class="feat"><span class="ic"><i data-icon="building"></i></span><div><h3>موقع تعريفي</h3><p>كل صفحات الشركة</p></div></div>
-      <div class="feat"><span class="ic"><i data-icon="languages"></i></span><div><h3>لغتان</h3><p>العربية والإنكليزية</p></div></div>
-      <div class="feat"><span class="ic"><i data-icon="phone"></i></span><div><h3>متجاوب</h3><p>حاسوب وتابلت وموبايل</p></div></div>
-      <div class="feat"><span class="ic"><i data-icon="dashboard"></i></span><div><h3>لوحة تحكم</h3><p>إدارة كاملة للمحتوى</p></div></div>
-      <div class="feat"><span class="ic"><i data-icon="news"></i></span><div><h3>الأخبار</h3><p>نشر فوري ومباشر</p></div></div>
-      <div class="feat"><span class="ic"><i data-icon="briefcase"></i></span><div><h3>التوظيف</h3><p>وظائف وطلبات أونلاين</p></div></div>
+      <div class="feat"><span class="ic"><i data-icon="briefcase"></i></span><div><h3>توظيف أسهل</h3><p>الطلبات في مكان واحد</p></div></div>
+      <div class="feat"><span class="ic"><i data-icon="layers"></i></span><div><h3>نسخة احتياطية</h3><p>تصدير واستيراد البيانات</p></div></div>
+      <div class="feat"><span class="ic"><i data-icon="shield"></i></span><div><h3>أمان</h3><p>دخول محمي وكلمات مشفرة</p></div></div>
     </div>
   </div>
 </section>
 
 <!-- 20 — CTA -->
-<section class="slide cta" style="--gx:50%;--gy:35%;--bx:50%;--by:40%;--dx:50%;--dy:40%">
+<section class="slide cta" data-section="4" style="--gx:50%;--gy:35%;--bx:50%;--by:40%;--dx:50%;--dy:40%">
   <div class="content center">
     <div class="mr-big"><img src="assets/logos/mrtech-mark-white.png" alt="Mr Tech"></div>
     <h1 class="title">هل تريد موقعاً<br><em>بهذا المستوى</em> لشركتك؟</h1>

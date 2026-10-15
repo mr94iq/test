@@ -37,7 +37,7 @@ const icon = (n, cls = '') => `<svg class="i ${cls}" viewBox="0 0 24 24">${ICONS
 const HEX = '<svg class="hex" viewBox="0 0 200 200"><path d="M100 6 181 53v94l-81 47-81-47V53z"/><path d="M100 30 160 65v70l-60 35-60-35V65z"/><path d="M100 54 140 77v46l-40 23-40-23V77z"/></svg>';
 
 const SITE = 'www.mrtechiq.com';
-const SECTIONS = ['المقدمة', 'الموقع الإلكتروني', 'لوحة التحكم', 'الخلاصة'];
+const SECTIONS = ['المقدمة', 'الموقع الإلكتروني', 'لوحة التحكم', 'تواصل معنا'];
 
 document.querySelectorAll('.slide').forEach((slide, idx, all) => {
   const n = String(idx + 1).padStart(2, '0');
@@ -89,13 +89,15 @@ document.querySelectorAll('.screen img').forEach((img) => {
 window.fitStages = () => {
   document.querySelectorAll('.stage, .fitbox').forEach((stage) => {
     const avail = stage.clientHeight;
-    stage.querySelectorAll(':scope > .laptop, :scope > .browser, :scope > .phone:not([style*="absolute"])').forEach((dev) => {
+    stage.querySelectorAll(':scope > .laptop, :scope > .browser, :scope > .phone:not(.side-phone):not(.float)').forEach((dev) => {
       for (let k = 0; k < 3; k++) {
         const h = dev.offsetHeight;
         if (h <= avail + 1) break;
         dev.style.width = (dev.offsetWidth * avail) / h + 'px';
       }
     });
+    // Collapse the box to its device so the mockup sits right under the text.
+    if (stage.parentElement.classList.contains('content')) stage.style.flex = '0 0 auto';
   });
 };
 window.addEventListener('load', () => document.fonts.ready.then(window.fitStages));

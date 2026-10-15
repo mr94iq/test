@@ -187,9 +187,9 @@ p.lead b { color: var(--ink); font-weight: 600; }
 svg.i { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ---------- device mockups ---------- */
-.stage { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: center; min-height: 0; }
+.stage { position: relative; flex: 1; display: flex; align-items: flex-start; justify-content: center; min-height: 0; padding-top: 30px; }
 
-.laptop { position: relative; width: 880px; filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.5)); }
+.laptop { position: relative; width: 910px; filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.5)); }
 .laptop .lid {
   background: linear-gradient(180deg, #1b1f1e, #0b0d0c);
   border-radius: 30px 30px 6px 6px; padding: 20px 20px 26px;
@@ -198,18 +198,19 @@ svg.i { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: rou
 .laptop .lid::before { content: ""; position: absolute; top: 8px; left: 50%; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: #29312d; }
 .laptop .screen { aspect-ratio: 16 / 10; border-radius: 8px; overflow: hidden; background: #e9efec; position: relative; }
 .laptop .base {
-  position: relative; height: 26px; margin: 0 -62px;
+  position: relative; height: 26px; margin: 0 -52px;
   background: linear-gradient(180deg, #d9e2dd 0%, #aab5af 55%, #6f7a74 100%);
   border-radius: 2px 2px 26px 26px;
 }
 .laptop .base::before { content: ""; position: absolute; top: 0; left: 50%; width: 150px; margin-left: -75px; height: 10px; border-radius: 0 0 12px 12px; background: #8d9893; }
 
 .phone {
-  position: relative; width: 300px; aspect-ratio: 390 / 844; border-radius: 52px; padding: 11px;
+  position: relative; width: 300px; border-radius: 52px; padding: 11px;
   background: linear-gradient(145deg, #2c3531, #0b0e0d); border: 1.5px solid #46534c;
   box-shadow: 0 40px 70px rgba(0, 0, 0, 0.55), inset 0 0 0 2px #0b0e0d;
 }
-.phone .screen { width: 100%; height: 100%; border-radius: 42px; overflow: hidden; position: relative; background: #e9efec; }
+/* screen matches the 390x844 captures exactly, so nothing is cropped */
+.phone .screen { width: 100%; aspect-ratio: 390 / 844; border-radius: 42px; overflow: hidden; position: relative; background: #e9efec; }
 .phone::after { content: ""; position: absolute; top: 22px; left: 50%; width: 92px; height: 26px; margin-left: -46px; border-radius: 20px; background: #050706; z-index: 2; }
 
 .browser {
@@ -229,7 +230,7 @@ svg.i { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: rou
 .browser .bar .url svg { width: 16px; height: 16px; stroke: var(--mint); }
 .browser .screen { position: relative; overflow: hidden; background: #e9efec; }
 
-.screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transform: scale(var(--z, 1)); transform-origin: var(--o, 50% 0%); }
 
 /* placeholder until real screenshots exist */
 .screen .ph {
